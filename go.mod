@@ -9,7 +9,7 @@ require (
 	github.com/containerd/continuity v0.0.0-20190827140505-75bee3e2ccb6
 	github.com/docker/go-connections v0.4.0
 	github.com/docker/go-units v0.4.0
-	github.com/lib/pq v1.10.2
+	github.com/jackc/pgx/v4 v4.15.0
 	github.com/moby/term v0.0.0-20201216013528-df9cb8a40635
 	github.com/opencontainers/image-spec v1.0.2
 	github.com/opencontainers/runc v1.0.3
@@ -32,11 +32,9 @@ require (
 	github.com/jackc/pgproto3/v2 v2.2.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20200714003250-2b9c44734f2b // indirect
 	github.com/jackc/pgtype v1.10.0 // indirect
-	github.com/jackc/pgx/v4 v4.15.0 // indirect
 	github.com/opencontainers/go-digest v1.0.0-rc1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	golang.org/x/crypto v0.0.0-20220315160706-3147a52a75dd // indirect
 	golang.org/x/text v0.3.7 // indirect
-	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c // indirect
 )
