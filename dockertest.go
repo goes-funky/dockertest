@@ -13,7 +13,6 @@ import (
 
 	"github.com/cenkalti/backoff/v4"
 	dc "github.com/ory/dockertest/v3/docker"
-	options "github.com/ory/dockertest/v3/docker/opts"
 	"github.com/pkg/errors"
 )
 
@@ -373,13 +372,22 @@ func (d *Pool) RunWithOptions(opts *RunOptions, hcOpts ...func(*dc.HostConfig)) 
 	mounts := []dc.Mount{}
 
 	for _, m := range opts.Mounts {
-		s, d, err := options.MountParser(m)
-		if err != nil {
-			return nil, err
+		vs := strings.SplitN(m, ":", 2)
+
+		var source, dest string
+		switch len(vs) {
+		case 1:
+			dest = vs[0]
+		case 2:
+			source = vs[0]
+			dest = vs[1]
+		default:
+			return nil, fmt.Errorf("invalid mount %q", m)
 		}
+
 		mounts = append(mounts, dc.Mount{
-			Source:      s,
-			Destination: d,
+			Source:      source,
+			Destination: dest,
 			RW:          true,
 		})
 	}

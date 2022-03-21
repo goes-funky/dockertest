@@ -7,9 +7,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/docker/cli/cli/compose/loader"
 	units "github.com/docker/go-units"
-	"github.com/pkg/errors"
 )
 
 var (
@@ -336,14 +334,4 @@ func (m *MemBytes) UnmarshalJSON(s []byte) error {
 	val, err := units.RAMInBytes(string(s[1 : len(s)-1]))
 	*m = MemBytes(val)
 	return err
-}
-
-// MountParser parses mount path.
-func MountParser(mount string) (source, destination string, err error) {
-	spec, err := loader.ParseVolume(mount)
-	if err != nil {
-		return "", "", errors.Wrap(err, "Failed to parse mount")
-	}
-
-	return spec.Source, spec.Target, nil
 }
